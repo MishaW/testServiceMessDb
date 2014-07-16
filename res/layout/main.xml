@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start KGM Service"
+                android:id="@+id/button"
+                android:layout_gravity="center_horizontal"
+                android:onClick="onStartServiceKgmAArm" android:layout_weight="1"/>
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Stop KGM Service"
+                android:id="@+id/button2"
+                android:layout_gravity="center_horizontal"
+                android:onClick="onStopServiceKgmAArm" android:layout_weight="1"/>
+    </LinearLayout>
+    <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_gravity="center_horizontal"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button3"
+                android:layout_gravity="center_horizontal"
+                android:text="Start Bind MessageInDb Service"
+                android:onClick="onStartServiceMessageInDb" android:layout_weight="1"/>
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Stop UnBind MessageInDb Service"
+                android:id="@+id/button4"
+                android:layout_gravity="center_horizontal"
+                android:onClick="onStopServiceMessageInDb" android:layout_weight="1"/>
+    </LinearLayout>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notification"
+            android:id="@+id/button5"
+            android:onClick="onNotification"/>
+    <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"/>
+</LinearLayout>
+
