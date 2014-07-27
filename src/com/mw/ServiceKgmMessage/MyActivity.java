@@ -1,4 +1,4 @@
-package com.mw.testServiceMessDb;
+package com.mw.ServiceKgmMessage;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import com.mw.ServiceKgmMessage.KgmMessage;
-import com.mw.ServiceKgmMessage.R;
 import dbmessage.DBMessageHelper;
 
 public class MyActivity extends Activity implements AdapterView.OnItemClickListener {

@@ -1,4 +1,4 @@
-package com.mw.testServiceMessDb;
+package com.mw.ServiceKgmMessage;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -10,23 +10,24 @@ import android.os.PowerManager;
 import android.util.Log;
 import com.mw.kgmspread.AEvent;
 import com.mw.kgmspread.Subscriber;
-import dbmessage.DBMessageHelper;
+import com.mw.testServiceMessDb.MyActivity;
 
 /**
- * Created by mishaw on 17.06.14.
+ * Created by mishaw on 27.07.14.
  */
-public class MessageInDb extends Service implements Subscriber {
+public class KgmMessage extends Service implements Subscriber {
 
     boolean flagConnectService;
     private ServiceConnection serviceConnection;
     private Intent intentKgmAArm;
     private AEventBroadcastReceiver aEventBroadcastReceiver;
+    private BroadcastReceiver dataBroadcastReceiver;
     private PowerManager powerManager;
     private PowerManager.WakeLock wakeLock;
-    DBMessageHelper dbMessageHelper;
     private NotificationManager notificationManager;
     private final String LOG_TAG = "KgmAArm::";
     private final String TAG_WAKE_LOCK = "Service MessageInDb";
+    public final String BROADCAST_ACTION_ = "com.mw.testServise.intent.action.AEVENT";
 
     @Override
     public void onCreate() {
@@ -48,9 +49,16 @@ public class MessageInDb extends Service implements Subscriber {
         };
 
         aEventBroadcastReceiver = new AEventBroadcastReceiver(this);
+        dataBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+            }
+        };
+
+
         powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG_WAKE_LOCK);
-        dbMessageHelper = new DBMessageHelper(this);
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     }
 
@@ -62,6 +70,7 @@ public class MessageInDb extends Service implements Subscriber {
         return START_STICKY;
     }
 
+    @Override
     public void onDestroy() {
         super.onDestroy();
         if (flagConnectService)
@@ -79,17 +88,17 @@ public class MessageInDb extends Service implements Subscriber {
     @Override
     public void setEvent(AEvent aEvent) {
         Log.d(LOG_TAG, aEvent.toString());
-        dbMessageHelper.dbOpen(true);
-        if ( dbMessageHelper.isSushestvuet(aEvent) ){
-            if ( aEvent.value == 0 )
-                dbMessageHelper.delete(aEvent);
-        } else {
-            if ( aEvent.value == 1 ){
-                dbMessageHelper.insertAEvent(aEvent, "ZAGLUSHKA");
-                sendNotification(aEvent.toString());
-            }
-        }
-        dbMessageHelper.dbClose();
+//        dbMessageHelper.dbOpen(true);
+//        if ( dbMessageHelper.isSushestvuet(aEvent) ){
+//            if ( aEvent.value == 0 )
+//                dbMessageHelper.delete(aEvent);
+//        } else {
+//            if ( aEvent.value == 1 ){
+//                dbMessageHelper.insertAEvent(aEvent, "ZAGLUSHKA");
+//                sendNotification(aEvent.toString());
+//            }
+//        }
+//        dbMessageHelper.dbClose();
     }
 
     private void sendNotification(String s){
