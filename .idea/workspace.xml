@@ -51,14 +51,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.mw.ServiceKgmMessage" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75455020-f58b-4171-8d3a-dac5baa137f9" name="Default" comment="Реализована логика обновления сообщений, и уведомлений">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mw/testServiceMessDb/AEventBroadcastReceiver.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mw/testServiceMessDb/MessageInDb.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mw/testServiceMessDb/MyActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mw/testServiceMessDb/ServiceKgmMessage/AEventBroadcastReceiver.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/mw/ServiceKgmMessage/KgmMessage.java" afterPath="$PROJECT_DIR$/src/com/mw/ServiceKgmMessage/KgmMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/mw/ServiceKgmMessage/MyActivity.java" afterPath="$PROJECT_DIR$/src/com/mw/ServiceKgmMessage/MyActivity.java" />
+    <list default="true" id="75455020-f58b-4171-8d3a-dac5baa137f9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="testServiceMessDb.iws" />
@@ -627,17 +620,21 @@
       <workItem from="1406391581506" duration="5131000" />
       <workItem from="1406437782097" duration="16190000" />
       <workItem from="1406604081275" duration="374000" />
-      <workItem from="1406649476630" duration="10548000" />
+      <workItem from="1406649476630" duration="10580000" />
     </task>
     <task id="LOCAL-00001" summary="Изменение архитектуры, работа без базы">
       <created>1406453173604</created>
       <updated>1406453173604</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Реализована логика обновления сообщений, и уведомлений">
+      <created>1406670791830</created>
+      <updated>1406670791830</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98159000" />
+    <option name="totallyTimeSpent" value="98191000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
