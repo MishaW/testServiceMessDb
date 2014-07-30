@@ -8,6 +8,7 @@ import android.content.*;
 import android.os.IBinder;
 import android.os.PowerManager;
 import android.util.Log;
+import android.util.Pair;
 import com.mw.kgmspread.AEvent;
 import com.mw.kgmspread.AEventBroadcastReceiver;
 import com.mw.kgmspread.Event;
@@ -32,8 +33,9 @@ public class KgmMessage extends Service implements Subscriber {
     private final String BROADCAST_ACTION_DATA = "com.mw.ServiceKgmMessage.intent.action.DATA";
     private final String COUNT_MESSAGE = "count_message";
     boolean flagSendNotification;
-
     private HashMap<Event, HashMap<Integer, Long>> dataMessage;
+    ParserMessage parserMessage;
+    private HashMap<Event, Pair<HashMap<Integer, String>, String>> dataTranslateMessage;
 
     @Override
     public void onCreate() {
@@ -59,6 +61,10 @@ public class KgmMessage extends Service implements Subscriber {
         dataMessage = new HashMap<Event, HashMap<Integer, Long>>();
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         flagSendNotification = false;
+        parserMessage = new ParserMessage(getResources().getXml(R.xml.config_message));
+        if (parserMessage.parsing()){
+            dataTranslateMessage = parserMessage.getDataTranslateMessage();
+        }
     }
 
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -127,7 +133,7 @@ public class KgmMessage extends Service implements Subscriber {
 
     private void sendUpdate(AEvent aEvent) {
         if (flagSendNotification){
-            sendNotification(aEvent.toString());
+            sendNotification(getMessage(aEvent.event, aEvent.number, aEvent.value));
         } else {
             Intent intentDataMessage = new Intent(BROADCAST_ACTION_DATA);
             int countMessage = 0;
@@ -149,16 +155,18 @@ public class KgmMessage extends Service implements Subscriber {
     }
 
     private String getMessage(Event event, int number, long value) {
+        if (dataTranslateMessage.containsKey(event))
+            return String.format(dataTranslateMessage.get(event).second, dataTranslateMessage.get(event).first.get(number));
         return "event=" + event.toString() + " number = " + String.valueOf(number) + " value=" + String.valueOf(value);
     }
 
     private void sendNotification(String s){
-        Notification notification = new Notification(R.drawable.button, "Messgae In DB Service", System.currentTimeMillis());
+        Notification notification = new Notification(R.drawable.button, s, System.currentTimeMillis());
 
         Intent intent = new Intent(this, MyActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
-        notification.setLatestEventInfo(this, "Notification's title", s, pendingIntent);
+        notification.setLatestEventInfo(this, "Kgm Message", s, pendingIntent);
 
         notification.flags += Notification.FLAG_AUTO_CANCEL;
 

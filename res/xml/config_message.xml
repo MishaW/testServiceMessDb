@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config_message>
+    <array>
+        <zmd name="zmd" number="1, 2, 3, 4, 11, 12, 21, 22, 311, 312, 321, 322" />
+        <point name="point" number="41, 42, 43, 44, 411, 412, 421, 422" />
+    </array>
+    <message>
+        <STREL_UPR_PLUS array="point" text="Стрелка №%s в плюсе!"/>
+        <ZMD_REGIM array="zmd" text="Замедлитель №%s в автоматическом режиме!"/>
+    </message>
+</config_message>
